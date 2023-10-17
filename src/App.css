@@ -1,38 +1,126 @@
-.App {
-  text-align: center;
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.grid-container{
+  display: grid;
+  grid-template-areas:
+   "header"
+   "main"
+   "footer";
+   grid-template-rows: 5rem 1fr 5rem;
+   grid-template-columns: 1fr;
+   height: 100vh;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header{
+  background-color: #203040;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  color: white;
+  justify-content: space-between;
+  padding:0.5rem;
+}
+.header-color:hover{
+  color: orangered;
+  cursor: pointer;
+}
+.sidebar{
+  display: flex;
+  justify-content:space-between;
+  padding: 0.5rem;
+}
+/*
+.sidebar-product{
+  flex: 1 20rem;
+}
+.sidebar-sort{
+  flex: 1 20rem;
+} */
+/* .sidebar-product-size{
+  flex: 1 20rem;
+} */
+.main{
+  display: flex;
+}
+.main-product{
+  flex: 3 ;
+}
+.main-card{
+  flex: 1 ;
+}
+footer{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-color: #203040;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.product-ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-around;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.product-ul li{
+  list-style-type: none;
+}
+.product-title{
+  color: blue;
+  padding: 0.5rem;
+}
+.product-title:hover{
+  color: #203040;
+}
+.product-price-btn{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding: 0.5rem;
+}
+.product-btn{
+  padding: 0.1rem;
+  width: 150px;
+  background-color: orangered;
+}
+.product-btn:hover{
+  background-color: orange;
+}
+.product-img{
+  width: 250px;
+  height: 250px;
+}
+.card-counter{
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.li{
+  list-style-type: none;
+}
+.cart-img{
+  width: 50px;
+}
+.cart-list{
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}
+.card-price-button{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.cart-btn{
+  padding: 0.1rem;
+  width: 180px;
+  background-color: orangered;
+  border-radius: 0.5rem;
+}
+.cart-btn:hover{
+  background-color: orange;
 }
