@@ -16,7 +16,8 @@ class App extends React.Component {
       data: data.products,
       sort: "",
       size: "",
-      cartitems : []
+      cartitems : localStorage.getItem("cartitem") ? JSON.parse(localStorage.getItem("cartitem")) : [],
+      
     }
   }
   sort = (e) => {
@@ -67,16 +68,36 @@ class App extends React.Component {
     })
     if(!alreadyExits){
     cartitems.push({...items , count : 1})
+    
   }
   console.log("=====>",this.state.cartitems)
   this.setState({cartitems: cartitems})
+
+  localStorage.setItem("cartitem", JSON.stringify(cartitems));
     // console.log(items)
     // var cartitems = this.state.cartitems
     // cartitems.push(items)
     // this.setState({cartitems: cartitems})
   }
 
+  removeCard = (item) => {
 
+    var cartitem = this.state.cartitems.slice()
+    
+   cartitem.filter((x) => x._id !== item._id)
+   this.setState({cartitems : cartitem.filter((x) => x._id !== item._id)})
+
+    localStorage.setItem("cartitem" , JSON.stringify(cartitem.filter((x) => x._id !== item._id)))
+    
+    console.log("===." , cartitem)
+
+    // localStorage.setItem("cartitem" , JSON.stringify(JSON.stringify(cartitem.filter((x) => x._id !== item._id)))
+  }
+
+  order = (order) => {
+    console.log(" ===>" ,order)
+    alert(`ypur name is  ${order.name}  and your is created`)
+  }
     render() {
     
       return (
@@ -92,7 +113,7 @@ class App extends React.Component {
                 <hr></hr>
                 <Product products={this.state.data} addToCard = {this.addToCard}/>
               </div>
-              <Card cartitems={this.state.cartitems}/>
+              <Card cartitems={this.state.cartitems} removeCard = {this.removeCard} order = {this.order}/>
             </div>
           </main>
           <footer>footer</footer>
