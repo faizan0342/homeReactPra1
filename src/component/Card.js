@@ -1,5 +1,7 @@
 import React from 'react';
 import formatCurrency from "../util"
+import  Fade from 'react-reveal';
+import Modal from "react-Modal"
 
 class Card extends React.Component {
     constructor(){
@@ -41,6 +43,7 @@ class Card extends React.Component {
                     {cartitems.length === 0 ? (<div>Empty Item</div>) : (<div>You have {cartitems.length} items in the cart</div>)}
                 </div>
                 <hr/>
+                <Fade left>
                 <div>
                         {cartitems.map((item) => 
                            <ul key={item._id}>
@@ -55,13 +58,17 @@ class Card extends React.Component {
                            </ul>
                         )}
                 </div>
+                </Fade>
                 {cartitems.length > 0 &&  (
+                    <Fade right>
                 <div className='total_button'>
                     <div>Total : {formatCurrency(cartitems.reduce((a,c) => a + (c.price * c.count) , 0))} </div>
                     <div><button className='cart-btn' onClick={() => {this.setState({checkOut : true})}}>Process</button></div>
                 </div>
+                </Fade>
                 )}
-                {this.state.checkOut && (
+                {this.state.checkOut || cartitems.length > 0 && (
+                    <Fade right>
                 <div className='card_form'>
                     <form onSubmit={this.submitForm}>
                         <lable>Name :</lable>
@@ -73,6 +80,7 @@ class Card extends React.Component {
                         <input className='cart-btn btn-center'cart-btn type='submit' value="check out"></input>
                     </form>
                 </div>
+                </Fade>
               )}
             </div>
 

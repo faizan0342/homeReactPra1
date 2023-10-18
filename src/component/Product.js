@@ -1,12 +1,14 @@
 import React from 'react';
 import currencyFormet from "../util"
-
+import Fade from 'react-reveal/Fade';
 class Product extends React.Component{
     render(){
        var products = this.props.products
        
         return(
+          
                 <div>
+                  <Fade left>
                   <ul className='product-ul'>
                     {products.map((product) => 
                     <div key={product._id}>
@@ -19,7 +21,9 @@ class Product extends React.Component{
                     </div>
                     )}
                   </ul>
+                  </Fade>
                 </div>
+                
            
         )
     }
