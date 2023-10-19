@@ -3,6 +3,8 @@ import currencyFormet from "../util"
 import Fade from 'react-reveal/Fade';
 import Modal from 'react-modal';
 import Zoom  from 'react-reveal/Zoom';
+import { connect } from 'react-redux';
+import {fetchProduct} from "../action/actionProduct"
 
 class Product extends React.Component{
   constructor(){
@@ -10,6 +12,9 @@ class Product extends React.Component{
     this.state = {
       product:null
     }
+  }
+  componentDidMount(){
+    this.props.fetchProduct()
   }
   openModal = (product) => {
     this.setState({product : product})
@@ -20,6 +25,7 @@ class Product extends React.Component{
     render(){
        var products = this.props.products
       
+       console.log("products ========>")
        
         return(
           
@@ -61,4 +67,4 @@ class Product extends React.Component{
     }
 }
 
-export default Product
+export default connect((state) => ({products : state.products}) ,{fetchProduct}) (Product)
