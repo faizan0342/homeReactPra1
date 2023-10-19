@@ -1,7 +1,7 @@
 import React from 'react';
 import formatCurrency from "../util"
-import  Fade from 'react-reveal';
-import Modal from "react-Modal"
+import  Fade from 'react-reveal'
+// import Modal from "react-modal"
 
 class Card extends React.Component {
     constructor(){
