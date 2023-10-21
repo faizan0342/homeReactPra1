@@ -1,1 +1,3 @@
-export const PRODUCTS = "PRODUCTS"
+export const FETCH_PRODUCTS = "FETCH_PRODUCTS"
+export const SIZE_PRODUCTS = "SIZE_PRODUCTS"
+export const SORT_PRODUCTS = "SORT_PRODUCTS"

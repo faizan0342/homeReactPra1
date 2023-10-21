@@ -1,10 +1,11 @@
-import {PRODUCTS} from "../types"
+import {FETCH_PRODUCTS} from "../types"
 
-export const productReducer = (state = {} , action) => {
+export const productsReducer = (state = {} , action) => {
+    console.log("reducer ==>" , action.payload)
     switch(action.type){
-        case PRODUCTS :
+        case FETCH_PRODUCTS :
             return{
-                products : action.payload
+                items : action.payload
             }
             default :
             return state

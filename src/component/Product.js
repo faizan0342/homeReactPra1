@@ -4,7 +4,7 @@ import Fade from 'react-reveal/Fade';
 import Modal from 'react-modal';
 import Zoom  from 'react-reveal/Zoom';
 import { connect } from 'react-redux';
-import {fetchProduct} from "../action/actionProduct"
+import {fetchProducts} from "../action/actionProduct"
 
 class Product extends React.Component{
   constructor(){
@@ -13,9 +13,11 @@ class Product extends React.Component{
       product:null
     }
   }
+
   componentDidMount(){
-    this.props.fetchProduct()
-  }
+    this.props.fetchProducts()
+}
+
   openModal = (product) => {
     this.setState({product : product})
   }
@@ -23,14 +25,16 @@ class Product extends React.Component{
     this.setState({product : null})
   }
     render(){
+      
        var products = this.props.products
       
-       console.log("products ========>")
+       console.log("products ========>" , this.props)
        
         return(
           
                 <div>
                   <Fade left>
+                  {!this.props.products ? (<div>Loading ....</div>) : (
                   <ul className='product-ul'>
                     {products.map((product) => 
                     <div key={product._id}>
@@ -45,7 +49,9 @@ class Product extends React.Component{
                     </div>
                     )}
                   </ul>
+                   )}
                   </Fade>
+                 
                   {this.state.product && (<Modal isOpen = {true}>
                     <Zoom>
                       <div>
@@ -67,4 +73,4 @@ class Product extends React.Component{
     }
 }
 
-export default connect((state) => ({products : state.products}) ,{fetchProduct}) (Product)
+export default connect((state) => ({products : state.products.items}) ,{fetchProducts}) (Product)
